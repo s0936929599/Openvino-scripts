@@ -9,14 +9,14 @@
 #Choose Application
 
 echo "|-----------------Here is the Applications--------------|"
-echo "|1.crossroad_camera_demo                                |"
-echo "|2.gaze_estimation_demo                                 |"
-echo "|3.human_pose_estimation_demo                           |"
-echo "|4.interactive_face_detection_demo                      |"
-echo "|5.object_detection_demo_yolov3_async                   |"
-echo "|6.text_detection_demo                                  |"
-echo "|7.benchmark_app                                        |"
-echo "|-------------------------------------------------------|"
+echo "|1.crossroad_camera_demo                                        |"
+echo "|2.gaze_estimation_demo                                            |"
+echo "|3.human_pose_estimation_demo                          |"
+echo "|4.interactive_face_detection_demo                       |"
+echo "|5.object_detection_demo_yolov3_async             |"
+echo "|6.text_detection_demo                                                 |"
+echo "|7.benchmark_app                                                           |"
+echo "|---------------------------------------------------------------|"
 
 read -p "Please choose a number of application "$'\n' n_app
 
@@ -79,7 +79,7 @@ else
 
 fi
 fi
-###-------------------------------------------------------###
+###--------------------------------------------------------------###
 
 
 
@@ -122,7 +122,7 @@ else
 
 fi
 fi
-###-------------------------------------------------------###
+###----------------------------------------------------------------###
 
 ###------------------7.benchmark_app----------------------###
 if [ ${n_app} == "7" ];then
@@ -140,15 +140,15 @@ while [ $cotue == 0 ]
 do
 
 echo "|-----------------Here is the Models--------------------|"
-echo "|1.alexnet                                              |"
-echo "|2.googlenet-v1                                         |"
-echo "|3.googlenet-v2                                         |"
-echo "|4.googlenet-v3                                         |"
-echo "|5.googlenet-v4                                         |"
-echo "|6.squeezenet1.0                                        |"
-echo "|7.squeezenet1.1                                        |"
-echo "|                                                       |"
-echo "|-------------------------------------------------------|"
+echo "|1.alexnet                                                                            |"
+echo "|2.googlenet-v1                                                                |"
+echo "|3.googlenet-v2                                                                |"
+echo "|4.googlenet-v3                                                                |"
+echo "|5.googlenet-v4                                                                |"
+echo "|6.squeezenet1.0                                                             |"
+echo "|7.squeezenet1.1                                                             |"
+echo "|                                                                                               |"
+echo "|--------------------------------------------------------------|"
 
 
 read -p "Please choose a number of model "$'\n' num_application
