@@ -6,17 +6,18 @@
 
 #Programming by Axiomtek Colin 2019/10/25 bench_mark_app done!
 
+#Programming by Axiomtek Colin 2019/10/28 bench_mark_app(add to 22 models ) done!
 #Choose Application
 
 echo "|-----------------Here is the Applications--------------|"
-echo "|1.crossroad_camera_demo                                        |"
-echo "|2.gaze_estimation_demo                                            |"
-echo "|3.human_pose_estimation_demo                          |"
-echo "|4.interactive_face_detection_demo                       |"
-echo "|5.object_detection_demo_yolov3_async             |"
-echo "|6.text_detection_demo                                                 |"
-echo "|7.benchmark_app                                                           |"
-echo "|---------------------------------------------------------------|"
+echo "|1.crossroad_camera_demo                                         |"
+echo "|2.gaze_estimation_demo                                             |"
+echo "|3.human_pose_estimation_demo                           |"
+echo "|4.interactive_face_detection_demo                        |"
+echo "|5.object_detection_demo_yolov3_async              |"
+echo "|6.text_detection_demo                                                  |"
+echo "|7.benchmark_app                                                            |"
+echo "|----------------------------------------------------------------|"
 
 read -p "Please choose a number of application "$'\n' n_app
 
@@ -79,7 +80,7 @@ else
 
 fi
 fi
-###--------------------------------------------------------------###
+###-------------------------------------------------------###
 
 
 
@@ -122,7 +123,7 @@ else
 
 fi
 fi
-###----------------------------------------------------------------###
+###-------------------------------------------------------###
 
 ###------------------7.benchmark_app----------------------###
 if [ ${n_app} == "7" ];then
@@ -130,8 +131,12 @@ if [ ${n_app} == "7" ];then
 clear
 application=([1]="alexnet" [2]="googlenet-v1" [3]="googlenet-v2" 
 [4]="googlenet-v3" [5]="googlenet-v4" 
-[6]="squeezenet1.0" [7]="squeezenet1.1")
-
+[6]="squeezenet1.0" [7]="squeezenet1.1" [8]="mobilenet-v1-0.25-128" [9]="mobilenet-v1-0.50-160" 
+[10]="mobilenet-v1-0.50-224" [11]="mobilenet-v1-1.0-224" [12]="mobilenet-v2" 
+[13]="mobilenet-v2-1.0-224" [14]="mobilenet-v2-1.4-224" 
+[15]="resnet-50" [16]="resnet-101" [17]="resnet-152" 
+[18]="vgg16" [19]="vgg19" 
+[20]="ssd300" [21]="ssd512" [22]="yolov3")
 
 cotue=0 
 
@@ -147,8 +152,22 @@ echo "|4.googlenet-v3                                                           
 echo "|5.googlenet-v4                                                                |"
 echo "|6.squeezenet1.0                                                             |"
 echo "|7.squeezenet1.1                                                             |"
-echo "|                                                                                               |"
-echo "|--------------------------------------------------------------|"
+echo "|8.mobilenet-v1-0.25-128                                            |"
+echo "|9.mobilenet-v1-0.50-160                                            |"
+echo "|10.mobilenet-v1-0.50-224                                          |"
+echo "|11.mobilenet-v1-1.0-224                                             |"
+echo "|12.mobilenet-v2                                                              |"
+echo "|13.mobilenet-v2-1.0-224                                              |"
+echo "|14.mobilenet-v2-1.4-224                                              |"
+echo "|15.resnet-50                                                                       |"
+echo "|16.resnet-101                                                                    |"
+echo "|17.resnet-152                                                                    |"
+echo "|18.vgg16                                                                              |"
+echo "|19.vgg19                                                                              |"
+echo "|20.ssd300                                                                            |"
+echo "|21.ssd512                                                                            |"
+echo "|22.yolov3                                                                             |"
+echo "|---------------------------------------------------------------|"
 
 
 read -p "Please choose a number of model "$'\n' num_application
@@ -263,26 +282,13 @@ source /opt/intel/openvino/bin/setupvars.sh
 /home/colin/inference_engine_samples_build/intel64/Release/benchmark_app -m /home/colin/桌面/model/mo_public/public/${application[$num_application]}/FP16/${application[$num_application]}.xml -niter 1000 -nireq 16 -d HETERO:FPGA,CPU
 fi
 
-read -p "Continue (type 0) or Exit (type 1) "$'\n' cotue
+read -p "Continue (type 0) or Exit (others) "$'\n' cotue
 
 done
 
 
 
 fi
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
