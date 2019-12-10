@@ -80,15 +80,15 @@ source ${env1}
 /home/colin/omz_demos_build/intel64/Release/object_detection_demo_yolov3_async -i $im -m /home/colin/桌面/OpenVINO-YoloV3-master/lrmodels/YoloV3/FP16/yolov3_v2_pcb.xml -d HDDL
 elif [ ${hd} == "GPU" ] || [ ${hd} == "2" ];then
 source ${env1}
-#/home/colin/omz_demos_build/intel64/Release/object_detection_demo_yolov3_async -i $im -m /home/colin/桌面/OpenVINO-YoloV3-master/lrmodels/YoloV3/FP16/frozen_darknet_yolov3_model.xml -d GPU
+/home/colin/omz_demos_build/intel64/Release/object_detection_demo_yolov3_async -i $im -m /home/colin/桌面/OpenVINO-YoloV3-master/lrmodels/YoloV3/FP16/frozen_darknet_yolov3_model.xml -d GPU
 #/home/colin/omz_demos_build/intel64/Release/object_detection_demo_yolov3_async -i $im -m /home/colin/桌面/OpenVINO-YoloV3-master/lrmodels/YoloV3/FP16/yolov3_pcb.xml -d GPU
-/home/colin/omz_demos_build/intel64/Release/object_detection_demo_yolov3_async -i $im -m /home/colin/桌面/OpenVINO-YoloV3-master/lrmodels/YoloV3/FP16/yolov3_v2_pcb.xml -d GPU
+#/home/colin/omz_demos_build/intel64/Release/object_detection_demo_yolov3_async -i $im -m /home/colin/桌面/OpenVINO-YoloV3-master/lrmodels/YoloV3/FP16/yolov3_v2_pcb.xml -d GPU
 elif [ ${hd} == "CPU" ] || [ ${hd} == "1" ];then
 source ${env1}
-#/home/colin/omz_demos_build/intel64/Release/object_detection_demo_yolov3_async -i $im -m /home/colin/桌面/OpenVINO-YoloV3-master/lrmodels/YoloV3/FP32/frozen_darknet_yolov3_model.xml
+/home/colin/omz_demos_build/intel64/Release/object_detection_demo_yolov3_async -i $im -m /home/colin/桌面/OpenVINO-YoloV3-master/lrmodels/YoloV3/FP32/frozen_darknet_yolov3_model.xml
 #/home/colin/omz_demos_build/intel64/Release/object_detection_demo_yolov3_async -i $im -m /home/colin/桌面/OpenVINO-YoloV3-master/lrmodels/YoloV3/FP32/yolov3_pcb.xml 
 
-/home/colin/omz_demos_build/intel64/Release/object_detection_demo_yolov3_async -i $im -m /home/colin/桌面/OpenVINO-YoloV3-master/lrmodels/YoloV3/FP32/yolov3_v2_pcb.xml
+#/home/colin/omz_demos_build/intel64/Release/object_detection_demo_yolov3_async -i $im -m /home/colin/桌面/OpenVINO-YoloV3-master/lrmodels/YoloV3/FP32/yolov3_v2_pcb.xml
 else
  echo "Please choose Inference Engine correctly"
 
@@ -337,11 +337,113 @@ application=([1]="alexnet" [2]="googlenet-v1" [3]="googlenet-v2"
 #script output.txt
 
 for i in "${application[@]}"
+   # FP32 CPU
    do 
-   /home/colin/inference_engine_samples_build/intel64/Release/benchmark_app -m /home/colin/桌面/model/mo_public/public/$i/FP16/$i.xml -niter 1000 -nireq 32 -d HDDL
+   /home/colin/inference_engine_samples_build/intel64/Release/benchmark_app -m /home/colin/桌面/model/mo_public/public/$i/FP32/$i.xml -niter 1000 -nireq 32 -d CPU
    done
+for i in "${application[@]}"
+   # FP32 GPU
+   do 
+   /home/colin/inference_engine_samples_build/intel64/Release/benchmark_app -m /home/colin/桌面/model/mo_public/public/$i/FP32/$i.xml -niter 1000 -nireq 32 -d GPU
+   done
+
+for i in "${application[@]}"
+    #FP16 CPU
+   do 
+   /home/colin/inference_engine_samples_build/intel64/Release/benchmark_app -m /home/colin/桌面/model/mo_public/public/$i/FP16/$i.xml -niter 1000 -nireq 32 -d CPU
+   done
+
+for i in "${application[@]}"
+   # FP16 GPU
+   do 
+   /home/colin/inference_engine_samples_build/intel64/Release/benchmark_app -m /home/colin/桌面/model/mo_public/public/$i/FP16/$i.xml -niter 1000 -nireq 32 -d GPU
+   done
+
+#for i in "${application[@]}"
+   # FP16 VPU
+  # do 
+   #/home/colin/inference_engine_samples_build/intel64/Release/benchmark_app -m /home/colin/桌面/model/mo_public/public/$i/FP16/$i.xml -niter 1000 -nireq 48 -d HDDL
+   #done
 
 
 fi
 ###---------------------------------------------------------------###
 exit 0
+
+
+
+
+
+
+#5.gaze estimation
+#6.face detection
+#7.human pose detection
+#8.Crossroad Camera
+
+#9.text detection
+#10.Security Barrier Camera
+
+
+
+
+
+
+
+#1.yolov3--------------------------------
+#/home/colin/omz_demos_build_1/intel64/Release/multi_channel_object_detection_demo_yolov3 -i /home/colin/桌面/OpenVINO-YoloV3-master/1.mp4 -m  /home/colin/桌面/OpenVINO-YoloV3-master/lrmodels/YoloV3/FP32/frozen_darknet_yolov3_model.xml -d HDDL
+#--------------------------------------
+
+#2.face detection -----------------------ok
+#./interactive_face_detection_demo -m '/home/colin/桌面/model/intel/face-detection-adas-0001/FP32/face-detection-adas-0001.xml' -m_ag '/home/colin/桌面/model/intel/age-gender-recognition-retail-0013/FP32/age-gender-recognition-retail-0013.xml' -i cam -m_em '/home/colin/桌面/model/intel/emotions-recognition-retail-0003/FP32/emotions-recognition-retail-0003.xml' 
+#--------------------------------------
+
+#3.human pose detection------------------ok
+#./human_pose_estimation_demo -m '/home/colin/桌面/model/intel/human-pose-estimation-0001/FP32/human-pose-estimation-0001.xml'
+#--------------------------------------
+
+
+#4.Crossroad Camera----------------------ok
+#./crossroad_camera_demo -m '/home/colin/桌面/model/intel/person-vehicle-bike-detection-crossroad-0078/FP32/person-vehicle-bike-detection-crossroad-0078.xml'  -i '/home/colin/桌面/OpenVINO-YoloV3-master/v.mp4'  -m_pa '/home/colin/桌面/model/intel/person-attributes-recognition-crossroad-0230/FP32/person-attributes-recognition-crossroad-0230.xml' 
+#-m_reid '/home/colin/桌面/model/intel/person-reidentification-retail-0079/FP32/person-reidentification-retail-0079.xml'
+#--------------------------------------
+
+#5.Security Barrier Camera----------------ok
+#./security_barrier_camera_demo -m '/home/colin/桌面/model/intel/vehicle-license-plate-detection-barrier-0106/FP32/vehicle-license-plate-detection-barrier-0106.xml' -i '/opt/intel/openvino/deployment_tools/demo/car_1.bmp' -m_va '/home/colin/桌面/model/intel/vehicle-attributes-recognition-barrier-0039/FP32/vehicle-attributes-recognition-barrier-0039.xml' -m_lpr '/home/colin/桌面/model/intel/license-plate-recognition-barrier-0001/FP32/license-plate-recognition-barrier-0001.xml'
+#---------------------------------------
+
+#6.text_detection_demo------------------ok
+#./text_detection_demo -m_td '/home/colin/桌面/model/intel/text-detection-0003/FP32/text-detection-0003.xml' -m_tr '/home/colin/桌面/model/intel/text-recognition-0012/FP32/text-recognition-0012.xml' -i '/home/colin/桌面/1.png' -dt image
+
+#./text_detection_demo -m_td '/home/colin/桌面/model/intel/text-detection-0003/FP32/text-detection-0003.xml' -m_tr '/home/colin/桌面/model/intel/text-recognition-0012/FP32/text-recognition-0012.xml'  -dt webcam -i /dev/video0
+#---------------------------------------
+
+#7.Pedestrian Tracker-------------------
+#./pedestrian_tracker_demo -m_det '/home/colin/桌面/model/intel/person-detection-retail-0013/FP32/person-detection-retail-0013.xml'  -m_reid '/home/colin/桌面/model/intel/person-reidentification-retail-0031/FP32/person-reidentification-retail-0031.xml' -i '/home/colin/桌面/store-aisle-detection.mp4'
+#---------------------------------------
+
+#8.Smart classroom----------------------
+#./smart_classroom_demo -i '/home/colin/桌面/classroom.mp4' -m_act '/home/colin/桌面/model/intel/person-detection-action-recognition-0005/FP32/person-detection-action-recognition-0005.xml'   -m_fd '/home/colin/桌面/model/intel/face-detection-adas-0001/FP32/face-detection-adas-0001.xml'   -m_reid '/home/colin/桌面/model/intel/face-reidentification-retail-0095/FP32/face-reidentification-retail-0095.xml'  -m_lm '/home/colin/桌面/model/intel/landmarks-regression-retail-0009/FP32/landmarks-regression-retail-0009.xml'
+#---------------------------------------
+
+#9.gaze estimation----------------------ok
+#./gaze_estimation_demo -m '/home/colin/桌面/model/intel/gaze-estimation-adas-0002/FP32/gaze-estimation-adas-0002.xml' -m_fd '/home/colin/桌面/model/intel/face-detection-retail-0004/FP32/face-detection-retail-0004.xml'   -m_hp '/home/colin/桌面/model/intel/head-pose-estimation-adas-0001/FP32/head-pose-estimation-adas-0001.xml'  -m_lm '/home/colin/桌面/model/intel/facial-landmarks-35-adas-0002/FP32/facial-landmarks-35-adas-0002.xml' -i '/home/colin/桌面/head-pose-face-detection-female.mp4'
+#---------------------------------------
+
+#.python segmentation ------------------
+#python3 '/opt/intel/openvino/inference_engine/demos/python_demos/segmentation_demo/segmentation_demo.py'  -i '/home/colin/桌面/93b55a45c1fd5d61.jpg'  -m '/home/colin/桌面/model/intel/semantic-segmentation-adas-0001/FP32/semantic-segmentation-adas-0001.xml' -l '/opt/intel/openvino/deployment_tools/inference_engine/lib/intel64/libcpu_extension_avx2.so'
+#----------------------------------
+
+
+#.python classification-----------------
+#python3 '/opt/intel/openvino/inference_engine/samples/python_samples/classification_sample/classification_sample.py' -m '/home/colin/桌面/model/mo_public/public/alexnet/FP32/alexnet.xml' -i '/opt/intel/openvino/deployment_tools/demo/car_1.bmp' --labels '/home/colin/桌面/model/mo_public/public/alexnet/FP32/alexnet.labels' -nt 1
+#--------------------------------------
+
+
+#.python instance_segmentation---------
+#python3 '/opt/intel/openvino/inference_engine/demos/python_demos/instance_segmentation_demo/instance_segmentation_demo.py' -m '/home/colin/桌面/model/intel/instance-segmentation-security-0050/FP32/instance-segmentation-security-0050.xml' --labels '/opt/intel/openvino/inference_engine/demos/python_demos/instance_segmentation_demo/coco_labels.txt' -i 0 -l '/opt/intel/openvino/deployment_tools/inference_engine/lib/intel64/libcpu_extension_avx2.so' --no_keep_aspect_ratio     --delay 1
+#--------------------------------------
+
+
+#Action Recognition--------------------
+#python3 action_recognition.py -m_en '/home/colin/桌面/model/intel/driver-action-recognition-adas-0002-encoder/FP32/driver-action-recognition-adas-0002-encoder.xml'  -m_de '/home/colin/桌面/model/intel/driver-action-recognition-adas-0002-decoder/FP32/driver-action-recognition-adas-0002-decoder.xml' -i 0 -lb '/opt/intel/openvino/inference_engine/demos/python_demos/action_recognition/driver_actions.txt'
+#--------------------------------------
