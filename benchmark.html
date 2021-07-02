@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+<h2 align=center>Openvino Benchmark</h2>
+
+<hr>
+
+<style>
+
+.Platform{
+
+	padding-left: 100px;
+}
+
+</style>
+
+<script>
+
+
+//$(document).ready(function(){
+//$('.go-btn').click(function() { 
+//	alert(conceptName);
+//});
+//});
+
+$(document).ready(function(){
+$('.go-btn').click(function() { 
+	var selectedplatform = $("#platform").find("option:selected").text();
+	var selectedplatformval = $("#platform").val();
+	var selectedhw = $("#hw").find("option:selected").text();
+	var selectedhwval = $("#hw").val();
+	var selectedprecison = $("#precison").find("option:selected").text();
+	var selectedprecisonval = $("#precison").val();
+	var selectedmodel = $("#model").find("option:selected").text();
+	var selectedmodelval = $("#model").val();
+	//alert("平台:"+selectedplatform+
+    //      "推論硬體："+selectedhw+
+    //      "精度"+selectedprecison+
+    //      "模型"+selectedmodel)
+     $("#p1").text("FPS:10");
+     $("#p2").text("Accuracy:78%");
+     $("#p1").show();
+     $("#p2").show();
+
+});
+});
+
+
+//function myFunction() {
+
+//  alert("FPS : " + a);
+//}
+
+</script>
+
+<form name="myForm">
+	<div  style="display:inline;" class="Platform">Platform：</div>
+		<select name="platform" id="platform" size=1  >
+			<option value="IPC974">IPC_974
+			<option value="MVS900">MVS_900
+
+		</select>
+
+	<div  style="display:inline;" class="Platform">Inference Engine：</div>
+		<select name="hw" id="hw" size=1 >
+			<option value="CPU">CPU
+			<option value="GPU">GPU
+			<option value="VPU">VPU
+		</select>
+
+	<div  style="display:inline;" class="Platform">Precision:</div>
+
+		<select name="precision" id="precision" size=1>
+			<option value="FP32">FP32
+			<option value="FP16">FP16
+			<option value="INT8">INT8
+		</select>
+
+	<div  style="display:inline;" class="Platform">Mode :</div>
+
+		<select name="model" id = "model" size=1>          
+			<option value="alexnet">alexnet
+			<option value="googlenet-v1">googlenet-v1
+			<option value="googlenet-v2">googlenet-v2
+			<option value="googlenet-v3">googlenet-v3
+			<option value="googlenet-v4">googlenet-v4
+			<option value="squeezenet1.0">squeezenet1.0
+			<option value="squeezenet1.1">squeezenet1.1
+			<option value="mobilenet-v1-0.25-128">mobilenet-v1-0.25-128
+			<option value="mobilenet-v1-0.50-160">mobilenet-v1-0.50-160
+			<option value="mobilenet-v1-0.50-224">mobilenet-v1-0.50-224
+			<option value="mobilenet-v1-1.0-224">mobilenet-v1-1.0-224
+			<option value="mobilenet-v2">mobilenet-v2
+			<option value="mobilenet-v2-1.0-224">mobilenet-v2-1.0-224
+			<option value="mobilenet-v2-1.4-224">mobilenet-v2-1.4-224
+			<option value="resnet-18">resnet-18
+			<option value="resnet-34">resnet-34
+			<option value="resnet-50">resnet-50
+			<option value="vgg16">vgg16
+			<option value="vgg19">vgg19
+		</select>
+
+
+
+</form>
+
+<hr>
+
+<button class='go-btn'>Information</button>
+
+<div id="p1"></div>
+<div id="p2"></div>
+
+</body>
+</html>
